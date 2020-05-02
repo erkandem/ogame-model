@@ -1,4 +1,4 @@
-from src.utils import OrePrice
+from .utils import OrePrice
 from math import floor, ceil
 
 
