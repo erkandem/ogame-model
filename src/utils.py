@@ -58,7 +58,7 @@ class OrePrice:
     """
     represents cost and or price
 
-    TODO: consider implement energy, too.
+    TODO: consider implementing energy, too.
           some research construction needs one off energy
     """
     metal: Union[float, int] = None
