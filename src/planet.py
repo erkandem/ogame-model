@@ -1,11 +1,6 @@
 from typing import Union
-from collections import namedtuple
-
-
-Coords = namedtuple(
-    'Coords',
-    ['galaxy', 'system', 'planet']
-)
+from src import buildings, facilities, ships, defence
+from .utils import Coords, Location
 
 
 class StellarObject:

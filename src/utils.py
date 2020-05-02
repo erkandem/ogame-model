@@ -1,13 +1,87 @@
-from collections import namedtuple
 import math
 from typing import Union
 
-from src.planet import Location
 
-ExchangeRate = namedtuple(
-    'ExchangeRate',
-    ['metal', 'crystal', 'deuterium']
-)
+class ExchangeRate:
+    metal: float
+    crystal: float
+    deuterium: float
+    basis = str
+
+    def __init__(
+            self,
+            metal: float,
+            crystal: float,
+            deuterium: float
+    ):
+        """
+        cross calculation helper.
+
+        Args:
+            metal (float):  how much metal is one unit of metal worth (one?)
+            crystal (float): how much metal is one unit of crystal worth
+            deuterium (float): how much metal is one unit of deuterium worth
+
+        """
+        self.metal = metal
+        self.crystal = crystal
+        self.deuterium = deuterium
+
+    def metal_to_crystal(self, amount):
+        return amount / self.crystal
+
+    def metal_to_deuterium(self, amount):
+        return amount / self.deuterium
+
+    def crystal_to_metal(self, amount):
+        return amount * self.crystal
+
+    def crystal_to_deuterium(self, amount):
+        return self.metal_to_deuterium(self.crystal_to_metal(amount))
+
+    def deuterium_to_metal(self, amount):
+        return amount * self.deuterium
+
+    def deuterium_to_crystal(self, amount):
+        return self.metal_to_deuterium(self.deuterium_to_metal(amount))
+
+    @classmethod
+    def regular(cls):
+        return cls(metal=1, crystal=2, deuterium=3)
+
+
+class Coords:
+    galaxy: int
+    system: int
+    planet: int
+
+    def __init__(
+            self,
+            galaxy: int,
+            system: int,
+            planet: int
+    ):
+        self.galaxy = galaxy
+        self.system = system
+        self. planet = planet
+
+    def __repr__(self):
+        return self.get_coords_str
+
+    def __str__(self):
+        return self.get_coords_str
+
+    def get_coords_str(self):
+        return f'{self.galaxy}:{self.system}:{self.planet}'
+
+
+class StellarObject:
+    pass
+
+
+class Location:
+    coords: Coords
+    object_type: StellarObject
 
 
 def calc_distance(
