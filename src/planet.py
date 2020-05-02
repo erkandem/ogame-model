@@ -7,23 +7,6 @@ class StellarObject:
     pass
 
 
-class Location:
-    coords: Coords
-    object: StellarObject
-
-
-class Universe:
-    galaxies: {}
-
-
-class Galaxy:
-    systems: {}
-
-
-class System:
-    planets: {}
-
-
 class DebrisField(StellarObject):
     resources: {}
 
