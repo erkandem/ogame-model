@@ -1,5 +1,9 @@
 class Facility:
-    pass
+    name: str
+
+    @property
+    def name(self):
+        return self.__class__.__name__
 
 
 class AllianceDepot(Facility):

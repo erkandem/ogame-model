@@ -25,6 +25,11 @@ class Ship:
     armor_multiplier: Union[float, int]
     armor_level: Union[float, int]
     structural_integrity: Union[float, int]
+    name: str
+
+    @property
+    def name(self):
+        return self.__class__.__name__
 
     def get_speed(self, drive_multiplier=None, drive_level=None):
         if drive_level and drive_multiplier:

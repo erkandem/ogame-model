@@ -14,6 +14,11 @@ class Defence:
     base_shield: Union[float, int]
     cost: OrePrice
     structural_integrity: Union[float, int]
+    name: str
+
+    @property
+    def name(self):
+        return self.__class__.__name__
 
 
 class RocketLauncher(Defence):

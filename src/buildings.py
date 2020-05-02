@@ -1,4 +1,4 @@
-from src.utils import OrePrice
+from .utils import OrePrice
 from typing import Union
 from math import floor, ceil, exp
 
@@ -12,11 +12,16 @@ class Building:
     production_factor: Union[float, int]
     universe_speed: Union[float, int]
     upgrade_cost_base: Union[float, int]
+    name: str
 
     def __init__(self, *, level=None, consumption_factor=None, production_factor=None):
         self.f_consumption = consumption_factor
         self.production_factor = production_factor
         self.level = level
+
+    @property
+    def name(self):
+        return self.__class__.__name__
 
     def get_production(self):
         return floor(self.production_factor * self.universe_speed * self.level * 1.1 ** self.level)

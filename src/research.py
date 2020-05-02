@@ -12,6 +12,11 @@ class ResearchField:
     ogame_api_code: int
     official_name: str
     requirements: {}
+    name: str
+
+    @property
+    def name(self):
+        return self.__class__.__name__
 
     def get_cost(self):
         cost_multiplier = self.get_cost_multiplier()
